@@ -1,0 +1,64 @@
+// Font Family Variables
+$spoqa: 'Spoqa Han Sans Neo', 'sans-serif';
+$pretendard: "Pretendard Variable", Pretendard, Roboto;
+$font-default: $spoqa; 
+$font-secondary: $pretendard; 
+
+// Font Weight Variables
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// Color Variables
+$color-black: #000000;
+$color-white: #ffffff;
+$color-primary: #00427A;
+$color-heading: #2C2C2C;
+$color-secondary: #F58220;
+$color-content: #979797;
+$color-content2: #575757;
+$color-border: #e0e0e0;
+$color-gray: #7D7D7D;
+$color-gray-light: #ECEFF1;
+$color-gray-dark: #242424;
+
+// Border Radius
+$radius: 16px;
+
+// Common Transition
+// $transition: all 300ms ease-in-out;
+$transition: unset;
+
+// Map SCSS Variables to CSS Variables
+:root {
+  // Font Families
+  --font-default: #{$font-default};
+  --font-secondary: #{$font-secondary};
+
+  // Font Weights
+  --font-light: #{$font-light};
+  --font-regular: #{$font-regular};
+  --font-medium: #{$font-medium};
+  --font-semibold: #{$font-semibold};
+  --font-bold: #{$font-bold};
+
+  // Colors
+  --color-black: #{$color-black};
+  --color-white: #{$color-white};
+  --color-primary: #{$color-primary};
+  --color-heading: #{$color-heading};
+  --color-secondary: #{$color-secondary};
+  --color-content: #{$color-content};
+  --color-border: #{$color-border};
+  --color-gray: #{$color-gray};
+  --color-gray-light: #{$color-gray-light};
+  --color-gray-dark: #{$color-gray-dark};
+
+  // Border Radius
+  --radius: #{$radius};
+
+  // Transition
+  --transition: #{$transition};
+}

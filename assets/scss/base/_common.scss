@@ -1,0 +1,57 @@
+/*********************************
+/*  Input Apperance Start
+*********************************/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	border-radius: 4px;
+	margin-right: 2px;
+	-webkit-filter: invert(1);
+	filter: invert(1);
+}
+/*********************************
+/*  Input Apperance End
+*********************************/
+body {
+	letter-spacing: 0.01em;
+		/* width */
+	&::-webkit-scrollbar,
+	::-webkit-scrollbar {
+			width: 6px;
+			background-color: rgba(0, 0, 0, 0.05);
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track,
+	::-webkit-scrollbar-track {
+			background: rgba(0, 0, 0, 0.05)
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb,
+	::-webkit-scrollbar-thumb {
+			background: rgba($color-heading, 0.7);
+			border-radius: 99px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover,
+	::-webkit-scrollbar-thumb:hover {
+			background: $color-heading;
+	}
+}
+
+// .container-xl 
+.container-xl {
+	@include respond(null, lg) {
+		max-width: 1536px;
+	}
+}

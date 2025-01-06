@@ -1,0 +1,130 @@
+.header {
+  width: 100%;
+  background-color: transparent;
+  color: $color-white;
+  padding: 12px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  @include respond(tabland) {
+    padding: 16px 0;
+  }
+  &.sticky {
+    background-color: $color-white;
+    color: $color-heading;
+    .header__logo {
+      filter: brightness(0);
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+
+  &__logo {
+    img {
+      height: 26px;
+      width: auto;
+      margin-right: clamp(16px, 4vw, 75px);
+      @include respond(phone) {
+        height: 16px;
+      }
+    }
+  }
+
+  &__nav {
+    @include respond(tabland) {
+      width: 100%;
+      position: fixed;
+      top: 59px;
+      left: 0;
+      background-color: $color-white;
+      color: $color-primary;
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 72px);
+      // padding: 24px 0;
+      @include respond(tabland) {
+        flex-direction: column;
+        gap: 0;
+        li {
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px dashed $color-gray;
+          &:last-of-type {
+            border-bottom: 0;
+          }
+        }
+      }
+      a {
+        display: block;
+        padding: 18px 8px;
+        color: currentColor;
+        &:hover {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  &__action {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+    button {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: currentColor;
+      &.header__nav__toggler {
+        @include respond(null, tabland) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/* Dropdown menu visibility toggle */
+.dropdown {
+  &-wrapper {
+    position: relative;
+  }
+  &-title {
+    margin-bottom: 0;
+    line-height: 1.52;
+  }
+  &-menu {
+    display: none;
+
+    &.left {
+      position: absolute;
+      right: 0;
+      padding: 8px;
+      flex-direction: column;
+      border-radius: 10px;
+      a {
+        display: block;
+        padding: 8px;
+        border-radius: 6px;
+        &:hover {
+          background-color: rgba($color-primary, 0.1);
+        }
+      }
+    }
+    &.active {
+      display: flex;
+    }
+  }
+}

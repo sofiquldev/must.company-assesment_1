@@ -1,0 +1,70 @@
+.footer {
+    padding: clamp(20px, 10vw, 80px) 0;
+    background-color: $color-gray-dark;
+    color: $color-white;
+    // &__inner {}
+    &__about {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        .brand {
+            font-family: $font-default;
+            font-size: clamp(16px, 2vw, 28px);
+            font-weight: $font-bold;
+            color: $color-white;
+            margin-bottom: 16px;
+        }
+        .site-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(8px, 2vw, 32px);
+            @include respond(tabport) {
+                flex-direction: column;
+                text-align: right;
+            }
+        }
+        .dropdown-toggle {
+            border: 1px solid $color-white;
+            border-radius: 99px;
+            text-transform: uppercase;
+            background-color: transparent;
+            font-weight: $font-regular;
+            color: $color-white;
+            padding: 8px 16px;
+        }
+        .dropdown-title {
+            font-size: clamp(12px, 1.5vw, 16px);
+            font-weight: $font-regular;
+            line-height: 2.2;
+        }
+        .dropdown-menu {
+            background-color: transparent;
+            color: $color-white;
+            border: 1px solid $color-white;
+            border-radius: 6px;
+            margin-top: 4px;
+            a {
+                color: $color-white;
+                &:hover {
+                    color: $color-secondary;
+                    background-color: transparent;
+                }
+            }
+        }
+        .desc {
+            width: 100%;
+            min-height: clamp(80px, 12vw, 200px);
+            color: $color-white;
+            margin-bottom: 20px;
+            @include respond(tabport) {
+                min-height: unset;
+                margin-top: 64px;
+            }
+            p {
+                font-weight: $font-regular;
+            }
+        }
+    }
+}

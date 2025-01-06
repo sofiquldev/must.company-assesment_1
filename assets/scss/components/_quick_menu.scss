@@ -1,0 +1,50 @@
+#quick__menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.5vw, 16px);
+    position: fixed;
+    bottom: clamp(32px, 3vw, 64px);
+    right: clamp(8px, 1.5vw, 24px);
+    z-index: 1000;
+    transform: translateX(200%) skew(0);
+    transition: transform 0.3s ease-in-out;
+    &.show {
+        transform: translateX(0) skew(0);
+    }
+
+    li {
+        display: block;
+        a {
+            display: inline-block;
+            width: clamp(58px, 6.1vw, 80px);
+            height: clamp(56px, 6vw, 80px);
+            display: flex;
+            gap: 2px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $color-primary;
+            border-radius: clamp(4px, 1vw, 12px);
+            background-color: $color-white;
+            transition: $transition;
+            font-size: clamp(10px, 1vw, 14px);
+            line-height: 1.8;
+            text-transform: uppercase;
+            font-weight: $font-medium;
+            @include respond(tabland) {
+                font-weight: $font-regular;
+            }
+            &:hover {
+                background-color: $color-primary;
+                color: $color-white;
+                img {
+                    filter: brightness(0) invert(1);
+                }
+            }
+            img {
+                width: 40%;
+            }
+        }
+    }
+}

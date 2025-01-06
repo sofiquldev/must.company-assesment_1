@@ -1,0 +1,38 @@
+.btn {
+    display: inline-block;
+    font-family: $font-default;
+    font-size: 16px;
+    line-height: 1.52;
+    padding: 8px 16px;
+    color: $color-white;
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: 4px;
+    transition: $transition;
+    .icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+    }
+    &-outline {
+        background-color: transparent;
+        border-color: $color-white;
+        color: $color-white;
+        &:hover {
+            background-color: $color-secondary;
+        }
+    }
+    &-box {
+        width: 80px;
+        aspect-ratio: 1/1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        border-radius: 8px;
+        border: $color-primary;
+        background-color: $color-white;
+    }
+}

@@ -1,0 +1,124 @@
+.image__box {
+  position: relative;
+
+  &-v1 {
+    padding-bottom: clamp(28px, 3vw, 40px);
+    position: relative; // Make sure the parent has a position to properly place the pseudo-elements
+
+    &::before,
+    &::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: $color-content2;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    &::after {
+      background-color: $color-secondary;
+      height: 3px;
+      width: 0;
+    }
+
+    &:hover {
+      .title {
+        color: $color-secondary;
+      }
+      &::after {
+        width: 60%;
+      }
+    }
+  }
+
+  @include respond(tabland) {
+    margin-bottom: 40px;
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+    // aspect-ratio: 5/3;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: clamp(16px, 2vw, 24px);
+  }
+  &__content {
+    & > .title {
+      font-family: $font-default;
+      font-size: clamp(24px, 2.5vw, 40px);
+      line-height: 1.52;
+      font-weight: $font-bold;
+      color: $color-white;
+    }
+    & > .desc {
+      font-family: $font-default;
+      color: $color-gray;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.52;
+    }
+  }
+
+  &__toggler {
+    width: 100%;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+
+    font-family: $font-default;
+    font-size: clamp(24px, 2.5vw, 40px);
+    line-height: 1.52;
+    color: $color-heading;
+    margin-bottom: clamp(24px, 2.5vw, 48px);
+    font-weight: $font-bold;
+
+    & > .icon {
+      width: 32px;
+    }
+  }
+
+  // image-box (v2)
+  &-v2 {
+    .image__box {
+      &__content {
+        & > .title {
+          color: $color-heading;
+          margin-bottom: 0;
+        }
+        ul {
+          list-style: disc;
+          padding-left: 36px;
+          margin-bottom: clamp(16px, 1.5vw, 24px);
+        }
+      }
+      &__image {
+        display: block;
+        margin-bottom: clamp(16px, 1vw, 20px);
+      }
+    }
+  }
+
+  &-v3 {
+    .image__box {
+      picture,
+      img {
+        width: clamp(240px, 80vw, 542px);
+        height: auto;
+        // aspect-ratio: 54/70;
+        object-fit: cover;
+        object-position: bottom center;
+        margin-bottom: 12px;
+      }
+      &__title {
+        font-size: clamp(12px, 1.5vw, 20px);
+        color: $color-white;
+        text-align: left;
+        margin-top: 12px;
+      }
+    }
+  }
+}
