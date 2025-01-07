@@ -1,0 +1,35 @@
+.fact {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(3px, 6vw, 112px);
+        @include respond(tabport) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include respond(phone-sm) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__item {
+        text-align: center;
+        &>.title {
+            font-family: $font-default;
+            font-size: clamp(20px, 2vw, 28px);
+            font-weight: $font-bold;
+            line-height: 1.8;
+            color: $color-secondary;
+            margin-bottom: 10px;
+            @include respond(phone) {
+                margin-bottom: 8px;
+            }
+        }
+        &>.value {
+            font-family: $font-default;
+            font-size: clamp(32px, 3vw, 56px);
+            font-weight: $font-bold;
+            line-height: 1.25;
+            color: $color-primary;
+        }
+    }
+}

@@ -27,6 +27,7 @@
     &:hover {
       .title {
         color: $color-secondary;
+        display: inline-block;
       }
       &::after {
         width: 60%;
@@ -38,6 +39,7 @@
     margin-bottom: 40px;
   }
   &__image {
+    display: block;
     width: 100%;
     height: auto;
     // aspect-ratio: 5/3;
@@ -46,19 +48,27 @@
     margin-bottom: clamp(16px, 2vw, 24px);
   }
   &__content {
-    & > .title {
+    .title {
       font-family: $font-default;
       font-size: clamp(24px, 2.5vw, 40px);
       line-height: 1.52;
       font-weight: $font-bold;
       color: $color-white;
     }
-    & > .desc {
+    .desc {
       font-family: $font-default;
       color: $color-gray;
       font-size: clamp(16px, 1.5vw, 20px);
       line-height: 1.52;
+      
+      p:last-of-type {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  &.center {
+    text-align: center;
   }
 
   &__toggler {
@@ -118,6 +128,31 @@
         color: $color-white;
         text-align: left;
         margin-top: 12px;
+      }
+    }
+  }
+
+  &-v4 {
+    // .image__box__image {
+    // }
+    .image__box__content {
+      margin-top: 24px;
+      @include respond(tabport) {
+        margin-top: 20px;
+      }
+      .title {
+        font-size: clamp(18px, 3vw, 40px);
+        color: $color-heading;
+        line-height: 1.52;
+      }
+      .desc {
+        margin-top: clamp(10px, 1.5vw, 24px);
+        @include respond(phone) {
+          font-size: 14px;
+        }
+        p:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }

@@ -58,6 +58,7 @@
             min-height: clamp(80px, 12vw, 200px);
             color: $color-white;
             margin-bottom: 20px;
+            font-size: clamp(12px, 1.5vw, 16px);
             @include respond(tabport) {
                 min-height: unset;
                 margin-top: 64px;
@@ -66,5 +67,10 @@
                 font-weight: $font-regular;
             }
         }
+    }
+    &__copyright {
+        font-size: clamp(12px, 1.5vw, 16px);
+        font-weight: 300;
+        line-height: 1.8;
     }
 }

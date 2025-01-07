@@ -29,9 +29,10 @@
             background-color: $color-white;
             transition: $transition;
             font-size: clamp(10px, 1vw, 14px);
-            line-height: 1.8;
+            line-height: 1.52;
             text-transform: uppercase;
             font-weight: $font-medium;
+            text-align: center;
             @include respond(tabland) {
                 font-weight: $font-regular;
             }

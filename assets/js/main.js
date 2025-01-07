@@ -1,29 +1,47 @@
 class Main {
     constructor() {
-        document.addEventListener("DOMContentLoaded", () => {
-            this.initFluidSwiper();
-            this.initAvenueSwiper();
-            this.menu_toggler();
-            this.dropdown_toggler();
-            this.stickyHeader();
-            this.backToTop();
-            this.toggleQuickMenu();
+        $(document).ready(() => this.initialize());
+    }
+
+    initialize() {
+        this.initializeSwiper('#introduction .banner__slider', '.banner__pagination');
+        this.initializeSwiper('.fluid__slider', '.fluid__pagination');
+        this.initializeAvenueSwiper('.avenue__slider');
+        this.setupMenuToggler();
+        this.setupDropdownToggler();
+        this.setupStickyHeader();
+        this.setupBackToTop();
+        this.setupQuickMenu();
+        this.initializeImageBoxToggler('.image__box__toggler');
+    }
+
+    /**
+     * Initializes the image box toggler functionality.
+     * @param {string} buttonSelector - The selector for the button that toggles the image box.
+     */
+    initializeImageBoxToggler(buttonSelector) {
+        $(buttonSelector).on('click', function () {
+            $(this).closest('.image__box').find('.image__box__image').stop(true, true).slideToggle(300);
         });
     }
 
     /**
-     * Initialize Fluid Swiper.
-     * This function initializes the Swiper carousel for the `.fluid__slider` element.
-     * 
-     * @param {string} selector - The selector for the Fluid Swiper element (default is '.fluid__slider').
+     * Initializes a Swiper instance for the given selector.
+     * @param {string} selector - The selector for the Swiper container.
+     * @param {string} paginationSelector - The selector for the Swiper pagination.
      */
-    initFluidSwiper(selector = '.fluid__slider') {
-        const fluidSwiper = document.querySelector(selector);
-        if (fluidSwiper) {
+    initializeSwiper(selector, paginationSelector) {
+        const swiperElement = document.querySelector(selector);
+        if (swiperElement) {
             new Swiper(selector, {
                 spaceBetween: 0,
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
                 pagination: {
-                    el: '.fluid__pagination',
+                    el: paginationSelector,
                     clickable: true,
                 },
             });
@@ -31,69 +49,90 @@ class Main {
     }
 
     /**
-     * Initialize the Avenue Swiper.
-     * This function initializes the Swiper carousel for the `.avenue__slider` element.
-     * 
-     * @param {string} selector - The selector for the Avenue Swiper element (default is '.avenue__slider').
+     * Initializes a Swiper instance for the avenue slider with responsive settings.
+     * @param {string} selector - The selector for the avenue Swiper container.
      */
-    initAvenueSwiper(selector = '.avenue__slider') {
+    initializeAvenueSwiper(selector) {
         const avenueSwiper = document.querySelector(selector);
         if (avenueSwiper) {
-            new Swiper(selector, {
+            const avenueSwiperInstance = new Swiper(selector, {
                 grabCursor: true,
-                initialSlide: window.innerWidth <= 768 ? 1.5 : 4.5,
                 centeredSlides: true,
-                slidesPerView: "auto",
-                spaceBetween: 24,
+                slidesPerView: this.getSlidesPerView(),
+                spaceBetween: this.getSpaceBetween(),
                 speed: 1000,
-                freeMode: false,
                 loop: true,
                 autoplay: {
                     delay: 2500,
                     disableOnInteraction: false,
                 },
-                pagination: {
-                    el: ".swiper-pagination",
-                },
             });
+
+            window.addEventListener('resize', () => this.updateAvenueSwiperOnResize(avenueSwiperInstance));
         }
     }
 
     /**
-     * Toggles the navigation menu visibility when the menu button is clicked.
-     * 
-     * @param {string} togglerSelector - The selector for the menu toggler button.
-     * @param {string} menuSelector - The selector for the navigation menu.
+     * Gets the number of slides to show based on the window width.
+     * @returns {number} The number of slides to show.
      */
-    menu_toggler(togglerSelector = '.header__nav__toggler', menuSelector = '.header__nav') {
-        const togglerButton = document.querySelector(togglerSelector);
-        const navMenu = document.querySelector(menuSelector);
-
-        togglerButton.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    getSlidesPerView() {
+        const width = window.innerWidth;
+        if (width <= 576) return 1.75;
+        if (width <= 992) return 2.7;
+        if (width <= 1200) return 4;
+        return 4.5;
     }
 
     /**
-     * Toggles the dropdown menu visibility when the dropdown button is clicked.
-     * This function listens for a click event on the dropdown button,
-     * and it toggles the "active" class on the dropdown menu to show or hide it.
-     * 
-     * @param {string} dropdownToggleSelector - The selector for the dropdown toggle button.
-     * @param {string} dropdownMenuSelector - The selector for the dropdown menu.
+     * Gets the space between slides based on the window width.
+     * @returns {number} The space between slides in pixels.
      */
-    dropdown_toggler(dropdownToggleSelector = '.dropdown-toggle', dropdownMenuSelector = '.dropdown-menu') {
+    getSpaceBetween() {
+        const width = window.innerWidth;
+        if (width <= 576) return 32;
+        if (width <= 992) return 56;
+        return 92;
+    }
+
+    /**
+     * Updates the avenue Swiper instance settings on window resize.
+     * @param {object} avenueSwiperInstance - The Swiper instance for the avenue slider.
+     */
+    updateAvenueSwiperOnResize(avenueSwiperInstance) {
+        avenueSwiperInstance.params.slidesPerView = this.getSlidesPerView();
+        avenueSwiperInstance.params.spaceBetween = this.getSpaceBetween();
+        avenueSwiperInstance.update();
+    }
+
+    /**
+     * Sets up the menu toggler functionality.
+     * @param {string} [togglerSelector='.header__nav__toggler'] - The selector for the menu toggler button.
+     * @param {string} [menuSelector='.header__nav'] - The selector for the navigation menu.
+     */
+    setupMenuToggler(togglerSelector = '.header__nav__toggler', menuSelector = '.header__nav') {
+        const togglerButton = document.querySelector(togglerSelector);
+        const navMenu = document.querySelector(menuSelector);
+
+        togglerButton.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+
+    /**
+     * Sets up the dropdown toggler functionality.
+     * @param {string} [dropdownToggleSelector='.dropdown-toggle'] - The selector for the dropdown toggle button.
+     * @param {string} [dropdownMenuSelector='.dropdown-menu'] - The selector for the dropdown menu.
+     */
+    setupDropdownToggler(dropdownToggleSelector = '.dropdown-toggle', dropdownMenuSelector = '.dropdown-menu') {
         const dropdownToggles = document.querySelectorAll(dropdownToggleSelector);
 
         dropdownToggles.forEach(dropdownToggle => {
             const dropdownMenu = dropdownToggle.nextElementSibling;
 
             dropdownToggle.addEventListener('click', (event) => {
-                event.stopPropagation(); // Prevent the click from propagating to the body
+                event.stopPropagation();
                 dropdownMenu.classList.toggle('active');
             });
 
-            // Close the dropdown if clicked outside
             document.addEventListener('click', (event) => {
                 if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
                     dropdownMenu.classList.remove('active');
@@ -103,30 +142,24 @@ class Main {
     }
 
     /**
-     * Adds a "sticky" class to the header when the user scrolls more than 80px.
+     * Sets up the sticky header functionality.
      */
-    stickyHeader() {
+    setupStickyHeader() {
         const header = document.querySelector('.header');
         const stickyOffset = 80;
 
-        if (window.scrollY > stickyOffset) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > stickyOffset) {
-                header.classList.add('sticky');
-            } else {
-                header.classList.remove('sticky');
-            }
-        });
+        const toggleStickyClass = () => {
+            header.classList.toggle('sticky', window.scrollY > stickyOffset);
+        };
+
+        window.addEventListener('scroll', toggleStickyClass);
+        toggleStickyClass();
     }
 
     /**
-     * Scrolls the page back to the top when the "Back to Top" button is clicked.
+     * Sets up the back-to-top button functionality.
      */
-    backToTop() {
+    setupBackToTop() {
         const backToTopButton = document.querySelector('#back-to-top');
 
         backToTopButton.addEventListener('click', (event) => {
@@ -136,20 +169,18 @@ class Main {
     }
 
     /**
-     * Toggles the visibility of the quick menu when the page is scrolled more than 1vh.
+     * Sets up the quick menu visibility toggle based on scroll position.
      */
-    toggleQuickMenu() {
+    setupQuickMenu() {
         const quickMenu = document.querySelector('#quick__menu');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > window.innerHeight * 0.01) {
-                quickMenu.classList.add('show');
-            } else {
-                quickMenu.classList.remove('show');
-            }
-        });
+        const toggleQuickMenuVisibility = () => {
+            quickMenu.classList.toggle('show', window.scrollY > window.innerHeight * 0.01);
+        };
+
+        window.addEventListener('scroll', toggleQuickMenuVisibility);
+        toggleQuickMenuVisibility();
     }
 }
 
-// Instantiate the Main class
 new Main();

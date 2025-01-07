@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mirae Asset Center 1</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 
-<body>
+<body id="homepage">
   <!-- #0 Header Section Start 
   *************************** -->
   <header class="header">
@@ -59,20 +63,23 @@
   <!-- #1 Banner Section Start 
   *************************** -->
   <div class="banner">
-    <div class="banner__slider">
-      <!-- swiper-item 01 start -->
-      <div class="banner__item" style="background-image: url('assets/images/banners/banner-1.webp');">
-        <div class="container-xl">
-          <div class="banner__inner">
-            <img class="banner__title-image" src="assets/images/banners/HeadTitle.svg" alt="header-title">
-            <div class="banner__content">
-              <h2 class="title">최고의 공간을 경험하세요</h2>
-              <p class="desc">국내를 넘어 세계의 무대를 준비하는 여러분들과 함께 합니다.</p>
+    <div class="banner__slider swiper">
+      <div class="swiper-wrapper">
+        <!-- swiper-item 01 start -->
+        <div class="swiper-slide banner__item" style="background-image: url('assets/images/banners/banner-1.webp');">
+          <div class="container-xl">
+            <div class="banner__inner">
+              <img class="banner__title-image" src="assets/images/banners/HeadTitle.svg" alt="header-title">
+              <div class="banner__content">
+                <h2 class="title">최고의 공간을 경험하세요</h2>
+                <p class="desc">국내를 넘어 세계의 무대를 준비하는 여러분들과 함께 합니다.</p>
+              </div>
             </div>
           </div>
         </div>
+        <!-- swiper-item 01 end -->
       </div>
-      <!-- swiper-item 01 end -->
+      <!-- <div class="banner__pagination"></div> -->
     </div>
   </div>
   <!-- #1 Banner Section End
@@ -84,26 +91,26 @@
   <section id="section-2" class="section">
     <div class="container-xl">
       <div class="section__header">
-        <h3 class="section__title">Convenience</h3>
-        <p class="section__desc">미래에셋센터원에서 경험하는 <span class="focus">특별한 서비스</span></p>
+        <h3 class="title">Convenience</h3>
+        <p class="desc">미래에셋센터원에서 경험하는 <span class="focus">특별한 서비스</span></p>
       </div>
       <div class="section__inner">
         <div class="row">
           <div class="col-md-4">
-            <div class="image__box image__box-v1">
+            <div class="image__box image__box-v1 item-1">
               <img class="image__box__image" src="assets/images/section-2/item-1.webp" alt="item1">
               <div class="image__box__content">
-                <h4 class="title">KF GALLERY</h4>
+                <a href="#" class="title">KF GALLERY</a>
                 <p class="desc">국내외 방문객에게 전시회, 문화 행사, 교육 프로그램 등 개최 국제 교류를 촉진하는 다양한 전시와 행사에 참여해보세요.</p>
               </div>
             </div>
           </div> <!-- .image__box #1 -->
 
           <div class="col-md-4">
-            <div class="image__box image__box-v1">
+            <div class="image__box image__box-v1 item-2">
               <img class="image__box__image" src="assets/images/section-2/item-2.webp" alt="item2">
               <div class="image__box__content">
-                <h4 class="title">센터원 Wellness</h4>
+                <a href="#" class="title">센터원 Wellness</a>
                 <p class="desc">피트니스, 골프GDR+, 필라테스, GX,스피닝, 사우나, PT(퍼스널트레이닝) 등 운영 <br>
                   바쁜 일상과 업무에서 잠시 휴식을 취해보세요.</p>
               </div>
@@ -111,10 +118,10 @@
           </div> <!-- .image__box #2 -->
 
           <div class="col-md-4">
-            <div class="image__box image__box-v1">
+            <div class="image__box image__box-v1 item-3">
               <img class="image__box__image" src="assets/images/section-2/item-3.webp" alt="item3">
               <div class="image__box__content">
-                <h4 class="title">SPARKPLUS</h4>
+                <a href="#" class="title">SPARKPLUS</a>
                 <p class="desc">원하는 인원만큼 사용할 수 있는 맞춤형 오피스일에만 집중할 수 있는 완벽한 공유 오피스를 만나보세요.</p>
               </div>
             </div>
@@ -249,8 +256,8 @@
   <section id="section-4" class="section">
     <div class="container-xl">
       <div class="section__header">
-        <h3 class="section__title"><img src="assets/images/section-4/section-title.svg" alt="Only Center 1"></h3>
-        <p class="section__desc">미래에셋센터원에서만 누리는 <span class="focus">특별한 혜택</span></p>
+        <h3 class="title"><img src="assets/images/section-4/section-title.svg" alt="Only Center 1"></h3>
+        <p class="desc">미래에셋센터원에서만 누리는 <span class="focus">특별한 혜택</span></p>
       </div>
       <div class="section__inner">
         <div class="row">
@@ -258,7 +265,7 @@
             <div class="image__box">
               <img class="image__box__image" src="assets/images/section-4/item-1.webp" alt="item1">
               <div class="image__box__content">
-                <h4 class="title">프라임 서비스</h4>
+                <a href="#" class="title">프라임 서비스</a>
                 <p class="desc">임산부 휴게실/수유실 운영, 세차 서비스, 우편 배달 서비스 등
                   입주사 임직원을 위한 차별화된 서비스를 제공합니다.</p>
               </div>
@@ -269,7 +276,7 @@
             <div class="image__box">
               <img class="image__box__image" src="assets/images/section-4/item-2.webp" alt="item2">
               <div class="image__box__content">
-                <h4 class="title">E-pit 전기차 충전소</h4>
+                <a href="#" class="title">E-pit 전기차 충전소</a>
                 <p class="desc">미래에셋센터원 주차장에는 전기차 이용자들을 위해
                   일반 충전소 외에도 E-pit 전기차 충전소가 마련되어 있습니다.</p>
               </div>
@@ -280,12 +287,11 @@
             <div class="image__box">
               <img class="image__box__image" src="assets/images/section-4/item-3.webp" alt="item3">
               <div class="image__box__content">
-                <h4 class="title">주차요금 할인</h4>
+                <a href="#" class="title">주차요금 할인</a>
                 <p class="desc">오피스,에비뉴 방문시 주차할인 혜택을 드리며 주말에는 최대 8천원으로 부담없이 미래에셋센터원을 즐길 수 있습니다.</p>
               </div>
             </div>
           </div> <!-- .image__box #3 -->
-
         </div>
       </div>
     </div>
@@ -306,12 +312,12 @@
                 <span>지금 살펴봐야할 이벤트</span>
                 <img src="assets/images/icons/plus.svg" alt="plus" class="icon">
               </button>
+              <picture class="image__box__image">
+                <source media="(max-width: 768px)" srcset="assets/images/section-5/item-1-sm.webp">
+                <img src="assets/images/section-5/item-1.webp" alt="item-1">
+              </picture>
               <div class="image__box__content">
-                <picture class="image__box__image">
-                  <source media="(max-width: 768px)" srcset="assets/images/section-5/item-1-sm.webp">
-                  <img src="assets/images/section-5/item-1.webp" alt="item-1">
-                </picture>
-                <h4 class="title">미래에셋센터원 크리스마스 작은 음악회</h4>
+                <a href="#" class="title">미래에셋센터원 크리스마스 작은 음악회</a>
                 <div class="desc">
                   <ul>
                     <li>공연 주제 : 재즈 공연</li>
@@ -321,7 +327,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> <!-- col-md-6 -->
 
           <div class="col-md-6">
             <div class="image__box image__box-v2">
@@ -329,19 +335,19 @@
                 <span>센터원 소식</span>
                 <img src="assets/images/icons/plus.svg" alt="plus" class="icon">
               </button>
+              <picture class="image__box__image" style="display: none;">
+                <source media="(max-width: 768px)" srcset="assets/images/section-5/item-2-sm.webp">
+                <img src="assets/images/section-5/item-2.webp" alt="item-1">
+              </picture>
               <div class="image__box__content">
-                <picture class="image__box__image">
-                  <source media="(max-width: 768px)" srcset="assets/images/section-5/item-2-sm.webp">
-                  <img src="assets/images/section-5/item-2.webp" alt="item-1">
-                </picture>
-                <h4 class="title">미래에셋센터원 홈페이지 리뉴얼 안내</h4>
+                <a href="#" class="title">미래에셋센터원 홈페이지 리뉴얼 안내</a>
                 <div class="desc">
                   <p>미래에셋센터원 공식 홈페이지가 리뉴얼 오픈했습니다. 더 나은 서비스 제공을 위해 불편한...</p>
                   <p><small>2024.09.04(수)</small></p>
                 </div>
               </div>
             </div>
-          </div>
+          </div> <!-- col-md-6  -->
         </div>
       </div>
     </div>
@@ -353,17 +359,14 @@
   <!-- #6 Section Start
   *************************** -->
   <section id="section-6" class="section">
-    <div class="container-xl">
-      <div class="section__header center">
-        <h3 class="section__title">
-          <img src="assets/images/logo-center1.svg" alt="Logo">
-        </h3>
-        <p class="section__desc">
-          미래에셋센터원
-          <span class="focus">AVENUE</span>
-        </p>
-      </div>
-    </div> <!-- container-xl -->
+    <div class="section__header center">
+      <h3 class="title">
+        <img src="assets/images/logo-center1.svg" alt="Logo">
+      </h3>
+      <p class="desc">
+        미래에셋센터원 <span class="focus">AVENUE</span>
+      </p>
+    </div>
     <div class="section__inner">
       <div class="avenue__slider swiper">
         <div class="swiper-wrapper">
@@ -423,6 +426,65 @@
             </picture>
             <h4 class="image__box__title">매드 포 갈릭</h4>
           </div><!-- item #08 -->
+
+          <!-- repeat again for smooth -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-1-mb.webp">
+              <img src="assets/images/section-6/item-1.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">아티제</h4>
+          </div> <!-- item #01 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-2-mb.webp">
+              <img src="assets/images/section-6/item-2.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">리나스</h4>
+          </div> <!-- item #02 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-3-mb.webp">
+              <img src="assets/images/section-6/item-3.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">봉우리 한정식</h4>
+          </div><!-- item #03 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-4-mb.webp">
+              <img src="assets/images/section-6/item-4.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">솔솥</h4>
+          </div><!-- item #04 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-5-mb.webp">
+              <img src="assets/images/section-6/item-5.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">뚝심한우</h4>
+          </div> <!-- item #05 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-6-mb.webp">
+              <img src="assets/images/section-6/item-6.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">차이797</h4>
+          </div> <!-- item #06 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-7-mb.webp">
+              <img src="assets/images/section-6/item-7.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">이춘복 참치</h4>
+          </div><!-- item #07 -->
+          <div class="image__box image__box-v3 swiper-slide">
+            <picture class="image__box__image">
+              <source media="(max-width: 768px)" srcset="assets/images/section-6/item-8-mb.webp">
+              <img src="assets/images/section-6/item-8.webp" alt="item-1">
+            </picture>
+            <h4 class="image__box__title">매드 포 갈릭</h4>
+          </div><!-- item #08 -->
+
         </div>
       </div>
     </div>
@@ -508,8 +570,9 @@
   <!-- quick-menu end -->
 
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Scripts -->
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 

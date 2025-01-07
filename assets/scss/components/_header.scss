@@ -2,14 +2,11 @@
   width: 100%;
   background-color: transparent;
   color: $color-white;
-  padding: 12px 0;
+  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
-  @include respond(tabland) {
-    padding: 16px 0;
-  }
   &.sticky {
     background-color: $color-white;
     color: $color-heading;
@@ -23,6 +20,10 @@
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    height: 80px;
+    @include respond(tabland) {
+      height: 60px;
+    }
   }
 
   &__logo {
@@ -61,10 +62,10 @@
         li {
           width: 100%;
           text-align: center;
-          border-bottom: 1px dashed $color-gray;
-          &:last-of-type {
-            border-bottom: 0;
-          }
+          border-top: 1px dashed $color-gray;
+          // &:last-of-type {
+          //   border-bottom: 0;
+          // }
         }
       }
       a {
@@ -91,6 +92,16 @@
         @include respond(null, tabland) {
           display: none;
         }
+      }
+    }
+    .dropdown-wrapper {
+      .dropdown-toggle {
+        &::after {
+          display: none;
+        }
+      }
+      @include respond(tabland) {
+        display: none;
       }
     }
   }
